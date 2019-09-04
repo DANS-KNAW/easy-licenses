@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 
-    Copyright (C) 2012 DANS - Data Archiving and Networked Services (info@dans.knaw.nl)
+    Copyright (C) 2019 DANS - Data Archiving and Networked Services (info@dans.knaw.nl)
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -31,7 +31,7 @@
 
     <name>EASY licenses</name>
     <description>Collection of EASY licenses</description>
-    <inceptionYear>2012</inceptionYear>
+    <inceptionYear>2019</inceptionYear>
 
     <scm>
         <developerConnection>scm:git:https://github.com/DANS-KNAW/${project.artifactId}</developerConnection>
@@ -39,6 +39,10 @@
     </scm>
 
     <dependencies>
+        <dependency>
+            <groupId>commons-configuration</groupId>
+            <artifactId>commons-configuration</artifactId>
+        </dependency>
         <dependency>
             <groupId>com.github.pathikrit</groupId>
             <artifactId>better-files_2.12</artifactId>
@@ -48,6 +52,15 @@
             <groupId>org.scalatest</groupId>
             <artifactId>scalatest_2.12</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>nl.knaw.dans.lib</groupId>
+            <artifactId>dans-scala-lib_2.12</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.json4s</groupId>
+            <artifactId>json4s-native_2.12</artifactId>
         </dependency>
     </dependencies>
 
@@ -72,16 +85,6 @@
     </pluginRepositories>
 
     <build>
-        <resources>
-            <resource>
-                <directory>src/main/assembly/dist</directory>
-                <targetPath>${project.build.directory}/version</targetPath>
-                <includes>
-                    <include>version</include>
-                </includes>
-                <filtering>true</filtering>
-            </resource>
-        </resources>
         <plugins>
             <plugin>
                 <groupId>net.alchim31.maven</groupId>
@@ -98,75 +101,12 @@
                 <groupId>com.mycila</groupId>
                 <artifactId>license-maven-plugin</artifactId>
                 <configuration combine.children="append">
-                    <excludes combine.self="override">
-                        <exclude>src/main/assembly/dist/extern/*.xsd</exclude>
-                        <exclude>src/main/assembly/dist/extern/**/*.xsd</exclude>
-                    </excludes>
                     <includes>
                         <include>pom.xml</include>
                         <include>src/test/scala/**</include>
-                        <include>src/main/assembly/**/*.xsd</include>
-                        <include>src/main/assembly/**/*.xml</include>
                     </includes>
                 </configuration>
             </plugin>
-            <!-- Avoid build warning about generating empty jar -->
-            <plugin>
-                <artifactId>maven-jar-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>default-jar</id>
-                        <phase>none</phase>
-                    </execution>
-                </executions>
-            </plugin>
         </plugins>
     </build>
-
-    <profiles>
-        <profile>
-            <id>rpm</id>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-                <file>
-                    <exists>/usr/local/bin/rpm</exists>
-                </file>
-            </activation>
-            <build>
-                <plugins>
-                    <plugin>
-                        <artifactId>maven-antrun-plugin</artifactId>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.codehaus.mojo</groupId>
-                        <artifactId>rpm-maven-plugin</artifactId>
-                        <configuration>
-                            <group>Applications/Archiving</group>
-                            <mappings combine.self="override">
-                                <mapping>
-                                    <directory>/var/www/html/licenses</directory>
-                                    <sources>
-                                        <source>
-                                            <location>src/main/assembly/dist</location>
-                                        </source>
-                                        <source>
-                                            <location>${project.build.directory}/version/version</location>
-                                        </source>
-                                    </sources>
-                                </mapping>
-                            </mappings>
-                        </configuration>
-                        <executions>
-                            <execution>
-                                <id>attach-rpm</id>
-                                <goals>
-                                    <goal>attached-rpm</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
 </project>
