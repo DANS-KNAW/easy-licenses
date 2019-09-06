@@ -18,11 +18,11 @@ package nl.knaw.dans.easy.licenses
 import java.io.File
 
 import org.apache.commons.configuration.PropertiesConfiguration
-import org.scalatest.{ FlatSpec, Matchers }
+import org.scalatest.{ FlatSpec, Inspectors, Matchers }
 
 import scala.collection.JavaConverters._
 
-class LicensesPropertiesSpec extends FlatSpec with Matchers {
+class LicensesPropertiesSpec extends FlatSpec with Matchers with Inspectors {
 
   val LICENSES_DIR = "src/main/assembly/dist/licenses"
   val files = new File(LICENSES_DIR).listFiles.filter(_.isFile).map(_.getName).filterNot(n => n.endsWith("properties") || n.endsWith("json")).toList
@@ -30,10 +30,10 @@ class LicensesPropertiesSpec extends FlatSpec with Matchers {
   val propValues = props.getKeys.asScala.map(key => props.getString(key)).toList
 
   "all the files in licenses.properties" should "be present in the licenses directory" in {
-    propValues.foreach(files should contain(_))
+    forEvery(propValues) { files should contain(_) }
   }
 
   "all the files in licenses directory (except .properties and .json files)" should "be present in the licenses.properties file" in {
-    files.foreach(propValues should contain(_))
+    forEvery(files) { propValues should contain(_) }
   }
 }

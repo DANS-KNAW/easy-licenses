@@ -19,9 +19,9 @@ import java.io.File
 
 import org.json4s._
 import org.json4s.native.JsonMethods._
-import org.scalatest.{ FlatSpec, Matchers }
+import org.scalatest.{ FlatSpec, Inspectors, Matchers }
 
-class LicensesJsonSpec extends FlatSpec with Matchers {
+class LicensesJsonSpec extends FlatSpec with Matchers with Inspectors {
 
   val LICENSES_DIR = "src/main/assembly/dist/licenses"
   val files = new File(LICENSES_DIR).listFiles.filter(_.isFile).map(_.getName).filterNot(n => n.endsWith("properties") || n.endsWith("json")).toList
@@ -33,10 +33,11 @@ class LicensesJsonSpec extends FlatSpec with Matchers {
   } yield viewName.values
 
   "all the files in licenses.json" should "be present in the licenses directory" in {
-    viewNames.foreach(fileNames should contain(_))
+    forEvery(viewNames) { fileNames should contain(_) }
   }
 
   "all the files in licenses directory (except .properties and .json files)" should "be present in the licenses.json file" in {
     fileNames.foreach(viewNames should contain(_))
+    forEvery(fileNames) { viewNames should contain(_) }
   }
 }
