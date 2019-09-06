@@ -25,7 +25,7 @@ import scala.collection.JavaConverters._
 class LicensesPropertiesSpec extends FlatSpec with Matchers {
 
   val LICENSES_DIR = "src/main/assembly/dist/licenses"
-  val files = new File(LICENSES_DIR).listFiles.filter(_.isFile).map(_.getName).filter(n => !n.endsWith("properties") && !n.endsWith("json")).toList
+  val files = new File(LICENSES_DIR).listFiles.filter(_.isFile).map(_.getName).filterNot(n => n.endsWith("properties") || n.endsWith("json")).toList
   val props = new PropertiesConfiguration(LICENSES_DIR + "/licenses.properties")
   val propValues = props.getKeys.asScala.map(key => props.getString(key)).toList
 

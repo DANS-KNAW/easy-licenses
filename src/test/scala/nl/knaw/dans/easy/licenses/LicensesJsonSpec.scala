@@ -24,7 +24,7 @@ import org.scalatest.{ FlatSpec, Matchers }
 class LicensesJsonSpec extends FlatSpec with Matchers {
 
   val LICENSES_DIR = "src/main/assembly/dist/licenses"
-  val files = new File(LICENSES_DIR).listFiles.filter(_.isFile).map(_.getName).filter(n => !n.endsWith("properties") && !n.endsWith("json")).toList
+  val files = new File(LICENSES_DIR).listFiles.filter(_.isFile).map(_.getName).filterNot(n => n.endsWith("properties") || n.endsWith("json")).toList
   val fileNames = files.map(f => f.substring(0, f.lastIndexOf(".")))
   val json = parse(new File(LICENSES_DIR, "licenses.json"))
   val viewNames = for {
