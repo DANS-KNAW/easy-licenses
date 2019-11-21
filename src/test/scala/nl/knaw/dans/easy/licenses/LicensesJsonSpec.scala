@@ -19,25 +19,16 @@ import java.io.File
 
 import org.json4s._
 import org.json4s.native.JsonMethods._
-import org.scalatest.{ FlatSpec, Inspectors, Matchers }
 
-class LicensesJsonSpec extends FlatSpec with Matchers with Inspectors {
-
-  private val LICENSES_DIR = "src/main/resources/licenses"
-  private val files = new File(LICENSES_DIR).listFiles.filter(_.isFile).map(_.getName).filterNot(n => n.endsWith("properties") || n.endsWith("json")).toList
-  private val fileNames = files.map(f => f.substring(0, f.lastIndexOf(".")))
+class LicensesJsonSpec extends TestFixture {
+  implicit val jsonFormats: Formats = new DefaultFormats {}
   private val json = parse(new File(LICENSES_DIR, "licenses.json"))
   private val viewNames = for {
     JObject(file) <- json
     JField("title", viewName) <- file
-  } yield viewName.values
+  } yield Extraction.extract[String](viewName)
 
-  "all the files in licenses.json" should "be present in the licenses directory" in {
-    forEvery(viewNames) { fileNames should contain(_) }
-  }
-
-  "all the files in licenses directory (except .properties and .json files)" should "be present in the licenses.json file" in {
-    fileNames.foreach(viewNames should contain(_))
-    forEvery(fileNames) { viewNames should contain(_) }
+  "all the files in licenses.json" should "be present in the licenses directory and vice versa" in {
+    viewNames.sortBy(identity) shouldBe baseFileNames
   }
 }
