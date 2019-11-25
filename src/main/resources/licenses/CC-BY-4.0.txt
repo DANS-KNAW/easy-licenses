@@ -39,7 +39,8 @@ Section 1 – Definitions.
     e.  Exceptions and Limitations means fair use,
         fair dealing, and/or any other exception or limitation to Copyright and
         Similar Rights that applies to Your use of the Licensed Material.
-    f.  Licensed Material means the artistic or literary work, database, or other material to which the Licensor applied this Public License.
+    f.  Licensed Material means the artistic or literary work, database, or
+        other material to which the Licensor applied this Public License.
     g.  Licensed Rights means the rights granted
         to You subject to the terms and conditions of this Public License, which
         are limited to all Copyright and Similar Rights that apply to Your use
@@ -57,7 +58,8 @@ Section 1 – Definitions.
         Parliament and of the Council of 11 March 1996 on the legal protection
         of databases, as amended and/or succeeded, as well as other essentially
         equivalent rights anywhere in the world.
-    k. You means the individual or entity exercising the Licensed Rights under this Public License. Your has a corresponding meaning.
+    k. You means the individual or entity exercising the Licensed Rights under this Public License.
+        Your has a corresponding meaning.
 
 Section 2 – Scope.
 
@@ -150,12 +152,14 @@ Section 4 – Sui Generis Database Rights.
 
 Where the Licensed Rights include Sui Generis Database Rights that apply to Your use of the Licensed Material:
 
-    a.  or the avoidance of doubt, Section 2(a)(1) grants You the right to extract, reuse, reproduce, and Share all or a substantial portion of the contents of the database;
+    a.  or the avoidance of doubt, Section 2(a)(1) grants You the right to extract, reuse, reproduce, and
+        Share all or a substantial portion of the contents of the database;
     b.  if You include all or a substantial portion of the database
         contents in a database in which You have Sui Generis Database Rights,
         then the database in which You have Sui Generis Database Rights (but not
         its individual contents) is Adapted Material; and
-    c.  You must comply with the conditions in Section 3(a) if You Share all or a substantial portion of the contents of the database.
+    c.  You must comply with the conditions in Section 3(a) if You Share all or a substantial
+        portion of the contents of the database.
 
 For the avoidance of doubt, this Section 4 supplements
 and does not replace Your obligations under this Public License where
@@ -199,9 +203,11 @@ Section 6 – Term and Termination.
 
     b.  Where Your right to use the Licensed Material has terminated under Section 6(a), it reinstates:
 
-         1. automatically as of the date the violation is cured, provided it is cured within 30 days of Your discovery of the violation; or
+         1. automatically as of the date the violation is cured, provided it is cured within 30 days
+            of Your discovery of the violation; or
          2. upon express reinstatement by the Licensor.
-        For the avoidance of doubt, this Section 6(b) does not affect any right the Licensor may have to seek remedies for Your violations of this Public License.
+        For the avoidance of doubt, this Section 6(b) does not affect any right the Licensor may
+            have to seek remedies for Your violations of this Public License.
     c.  For the avoidance of doubt, the Licensor may also offer the
         Licensed Material under separate terms or conditions or stop
         distributing the Licensed Material at any time; however, doing so will
@@ -210,7 +216,8 @@ Section 6 – Term and Termination.
 
 Section 7 – Other Terms and Conditions.
 
-    a.  The Licensor shall not be bound by any additional or different terms or conditions communicated by You unless expressly agreed.
+    a.  The Licensor shall not be bound by any additional or different terms or conditions
+        communicated by You unless expressly agreed.
     b.  Any arrangements, understandings, or agreements regarding
         the Licensed Material not stated herein are separate from and
         independent of the terms and conditions of this Public License.
