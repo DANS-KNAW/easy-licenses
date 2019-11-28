@@ -32,7 +32,7 @@ class LicensesPropertiesSpec extends PropsFixture {
     propBaseFileNames shouldBe documentBaseFileNames
   }
 
-  "the specified extension in licenses.properties" should "exist in the licenses directory" in {
+  "a file with extension specified in licenses.properties" should "exist in the licenses directory" in {
     forEvery(propFiles) { fileName => file(fileName) should exist }
   }
 

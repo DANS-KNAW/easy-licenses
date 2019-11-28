@@ -19,7 +19,7 @@ import scala.collection.JavaConverters._
 
 class UrlSpec extends LicenseJsonFixture with PropsFixture {
 
-  "all the urls in licenses.json" should "be present in the properties (not vice versa)" in {
+  "all the urls in licenses.json" should "be present in licenses.properties (not vice versa)" in {
     val propUrls: Seq[String] = props.getKeys.asScala.map(toBaseUrl).toList
     val jsonUrls: Seq[String] = jsonMap.keys.map(toBaseUrl).toSeq
 
