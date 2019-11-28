@@ -36,7 +36,7 @@ class LicensesPropertiesSpec extends PropsFixture {
     forEvery(propFiles) { fileName => file(fileName) should exist }
   }
 
-  "all license files" should "have a text version" in pendingUntilFixed { // used by easy-deposit-agreement-creator
+  "all license files" should "have a text version" in { // used by easy-deposit-agreement-creator
     forEvery(propBaseFileNames) { baseFileName => file(s"$baseFileName.txt") should exist }
   }
 
